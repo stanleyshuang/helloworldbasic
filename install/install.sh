@@ -79,4 +79,7 @@ echo "cd $apphome/"
 echo "source $apphome/venv/bin/activate"
 echo "source $env/env.sh"
 echo "source $apphome/.$USER/credential.sh"
+if ! ps | grep [g]unicorn ; then
+    echo "gunicorn -w 3 -t 60 -b 0.0.0.0:8000 app:app &"
+fi
 echo "python main.py"
